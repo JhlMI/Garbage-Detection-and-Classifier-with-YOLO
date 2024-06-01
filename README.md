@@ -1,1 +1,1 @@
-# Garbage-Detection-Sorting
+# Garbage-Detection-and-Sorting
