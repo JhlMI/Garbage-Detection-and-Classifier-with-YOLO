@@ -21,13 +21,13 @@ This project implements a real-time trash detection and classification system us
 
 
 ### Image 1
-![Inference in local](images\image1.jpg)
+![Inference in local](images/image1.jpg)
 
 ### Image 2
-![Inference in local](images\image2.jpg)
+![Inference in local](images/image2.jpg)
 
 ### Image 3
-![Inference in local](images\image3.jpg)
+![Inference in local](images/image3.jpg)
 
 ### Image 4
-![Inference in local](images\image4.jpg)
+![Inference in local](images/image4.jpg)
