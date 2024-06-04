@@ -1,4 +1,4 @@
-# Garbage Detection and Classifier with YOLO
+# GarbageDetection and Classifier with YOLO
 
 
 This project implements a real-time trash detection and classification system using the YOLO (You Only Look Once) model. The system is designed to identify five categories of trash: plastic, paper, glass, metal, and cardboard. Once an object is detected and classified, the system controls a set of servomotors via an Arduino to open the corresponding chutes, ensuring that each type of trash is directed to its specific container.
