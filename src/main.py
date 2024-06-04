@@ -4,6 +4,7 @@ import cv2
 import os
 import time
 import serial
+from collections import deque
 
 model_n = YOLO("runs/detect/train6/weights/best.pt")
 model_s = YOLO("runs/detect/train7/weights/best.pt")
@@ -16,10 +17,14 @@ colors ={
         'Plastic': (0, 255, 255)
     }
 
+detections_queue = deque()
+
+
 def detect(model, frame , conf ):
     results = model(frame, conf = conf)
     
     detections = results[0].boxes.data
+    detected_labels = []
     
     for det in detections:
         x1, y1, x2, y2, conf, cls = det
@@ -29,9 +34,23 @@ def detect(model, frame , conf ):
         cv2.rectangle(frame, (int(x1), int(y1)), (int(x2), int(y2)), color, 2)
         text = f'{label}: {conf:.2f}'
         cv2.putText(frame, text, (int(x1), int(y1) - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-     
+        detected_labels.append(label) 
+        
+    return detected_labels
 
-
+def send_label(label):
+    comandos = {
+        "Plastic": "abrir_plastico",
+        "Paper": "abrir_papel",
+        "Glass": "abrir_vidrio",
+        "Metal": "abrir_metal",
+        "Cardboard": "abrir_carton"
+    }
+    comando = comandos.get(label, "")
+    if comando:  
+        print(f"Enviando comando al Arduino: {comando}")
+        
+        
 class CameraViewer:
     def __init__(self, camera,show_fps=True):
         self.cap = cv2.VideoCapture(camera)
@@ -65,8 +84,17 @@ class CameraViewer:
                 self.frames += 1
                 self.show_fps_on_frame(frame)
                 
-            detect(model_s , frame , conf= 0.65)
+            detected_labels  = detect(model_s , frame , conf= 0.65)
             
+            # Agregar las detecciones a la cola
+            for label in detected_labels:
+                detections_queue.append(label)
+
+            # Procesar las detecciones en la cola
+            if detections_queue:
+                current_label = detections_queue.popleft()
+                send_label(current_label)
+                
             cv2.imshow("CAMERA", frame)
             key = cv2.waitKey(1)
             if key == ord('q') or key == ord('Q'):
