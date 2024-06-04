@@ -30,4 +30,3 @@ This project implements a real-time trash detection and classification system us
 ![Inference in local](images/image3.jpg)
 
 ### Image 4
-![Inference in local](images/image4.jpg)
