@@ -19,15 +19,19 @@ This project implements a real-time trash detection and classification system us
 
 ## Images of the inference
 
+### Dataset
+The images of the dataset can be found in the following link (Roboflow Universe)
+https://universe.roboflow.com/j1nzo1/garbage-detection-project
 
-### Image 1
+
+### Image 1: Inference in Local
 ![Inference in local](images/image1.jpg)
 
-### Image 2
+### Image 2: Inference in Local
 ![Inference in local](images/image2.jpg)
 
-### Image 3
+### Image 3: Inference in Local
 ![Inference in local](images/image3.jpg)
 
-### Image 4
+### Image 4: Inference in Local
 ![Inference in local](images/Image4.jpg)
