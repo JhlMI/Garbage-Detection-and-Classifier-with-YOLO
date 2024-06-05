@@ -17,12 +17,11 @@ This project implements a real-time trash detection and classification system us
 - **Python**: For integrating the detection model, image processing, and hardware control.
 - **Arduino IDE**: For programming the servo control.
 
-## Images of the inference
-
 ### Dataset
 The images of the dataset can be found in the following link (Roboflow Universe)
 https://universe.roboflow.com/j1nzo1/garbage-detection-project
 
+## Images of the inference
 
 ### Image 1: Inference in Local
 ![Inference in local](images/image1.jpg)
